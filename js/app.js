@@ -8,10 +8,11 @@ $(document).ready(function(){
     duration : 2,
     stopImageNumber : -1,
     startCallback : function() {
+      console.log("startcallback",window.started);
       if( window.started ) return false;
       window.started = true;
       console.log('start');
-      window.play = new Audio('mk64_finallap.wav');
+      window.play = new Audio('sounds/mk64_finallap.wav');
       window.play.play();
       window.setTimeout(
         function(){ $('div.roulette').roulette('stop') },
@@ -24,7 +25,7 @@ $(document).ready(function(){
     stopCallback : function($stopElm) {
       console.log('stop');
       window.play.pause();
-      new Audio('win.mp3').play();
+      new Audio('sounds/win.mp3').play();
       window.started = false;
     }
   }
@@ -32,6 +33,9 @@ $(document).ready(function(){
 
   // START!
   $('.start').click(function(){
+
+    console.log("startcallback",window.started);
+    if( window.started ) return false;
     $('div.roulette').roulette('start');  
   });
 
